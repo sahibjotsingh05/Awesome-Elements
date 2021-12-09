@@ -1,0 +1,619 @@
+@font-face {
+    font-family: Poppins;
+    src: url("../fonts/Poppins-Light.ttf")
+}
+@font-face {
+    font-family: Poppins-bold;
+    src: url("../fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: Poppins-light;
+    src: url("../fonts/Poppins-ExtraLight.ttf");
+}
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+:root{
+    --Darkpurple: #320d3e;
+    --Purple: #d902ee;
+    --Lightpurple: #f162ff;
+    --Sepia: #ffd79d;
+}
+html{
+    scroll-behavior: smooth;
+}
+/*----------------------------------------------------------------- MENU ----------------------------------------------------*/
+nav{
+    background-color: var(--Darkpurple);
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+    z-index: 10;
+}
+nav ul li{
+    margin-right: 2vw;
+}
+nav ul li a{
+    color: var(--Sepia);
+    font-size: 20px;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+nav ul li a:after {    
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--Sepia);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    }
+  nav ul li a:hover:after { 
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    }
+nav .logo{
+    margin: 0px 1vw;
+}
+nav #menu-btn{
+    height: 5vh;
+    cursor: pointer;
+    display: none;
+}
+nav #menu-check{
+    display: none;
+}
+@media(max-width: 830px){
+    nav #menu-btn{
+        display: initial;
+        margin-right: 2vw;
+    }
+    nav .menu{
+        position: fixed;
+		top: 10vh;
+		margin: 0px;
+		display: block;
+		background-color: var(--Darkpurple);
+    	height: 100vh;
+    	width: 100%;
+    	text-align: center;
+        left: -100%;
+        transition: all 0.5s ease;
+    }
+    nav ul li{
+        margin-top: 10vh;
+    }
+    #menu-check:checked ~ .menu{
+        left: 0px;
+    }
+    #menu-check:checked ~ #menu-label #menu-btn{
+        content: url("../media/menu_cross.svg");
+    }
+}
+/*--------------------------------------------------- BANNER --------------------------------------------------------------- */
+.banner{
+    width: 100%;
+    height: 88vh;
+    position: relative;
+    margin-top: 12vh;
+}
+.banner img{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    z-index: -1;
+}
+.banner-heading{
+    color: var(--Darkpurple);
+    text-shadow: 3px 3px var(--Sepia);
+    font-family: Poppins-bold;
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    font-size: 50px;
+    font-weight: 600;
+    padding: 20vh 15vw;
+}
+@media(max-width: 750px){
+    .banner{
+        height: 55vh;
+    }
+    .banner-heading{
+        padding: 18vh 0vw;
+    }
+}
+@media(max-width: 550px){
+    .banner-heading{
+        padding: 15vh 0vw;
+        font-size: 38px;
+    }
+}
+/*-------------------------------------------- HISTORY ----------------------------------------------------------- */
+.history-heading{
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    margin: 3vh 0vw;
+    color: var(--Purple);
+    font-family: Poppins-bold;
+}
+.history-row{
+    display: flex;
+    justify-content: space-around;
+}
+.history-image{
+    width: 40%;
+    text-align: center;
+}
+.history-text{
+    width: 60%;
+}
+.history-img{
+    width: 50%;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+.history-img:hover{
+    transform: scale(1.2);
+}
+.history-sub-text{
+    font-size: 30px;
+    color: var(--Lightpurple);
+}
+.history-para{
+    width: 80%;
+    font-size: 17px;
+    color: grey;
+}
+.mosley-row{
+    margin-top: 5vh;
+}
+.mosley-text{
+    margin-left: 20%;
+}
+.mosley-para{
+    margin-left: 20%;
+    font-size: 17px;
+    color: grey;
+}
+@media(max-width: 700px){
+    .history-row{
+        display: block;
+    }
+    .history-image{
+        width: 100%;
+    }
+    .history-text{
+        width: 100%;
+    }
+    .history-para{
+        margin: 0px 10%;
+    }
+    .history-sub-text{
+        width: 100%;
+        text-align: center;
+    }
+    .mosley-para{
+        width: 80%;
+        margin: 0px 10%;
+    }
+    .mosley-text{
+        margin: 0px;
+    }
+}
+/*---------------------------------------------------------------------Mosley Parallax effect--------------------------------*/
+.mosley-quotation{
+    height: max-content;
+    width: 100%;
+    background-image: url("../media/mosley-banner.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mosley-quotation h1{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+}
+.mosley-quotation h2{
+    font-size: 30px;
+    width: 100%;
+    text-align: right;
+    padding-right: 10vw;
+    color: white;
+}
+/*-------------------------------------------------periodic table----------------------------*/
+.periodic-table-area{
+    width: 100%;
+    height: max-content;
+    text-align: center;
+}
+.periodic-table-area h1{
+    font-size: 50px;
+    margin: 4vh 0px;
+    color: var(--Purple);
+}
+.periodic-table{
+    width: 90%;
+    margin: 0px 5%;
+    height: max-content;
+}
+.period{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.element{
+    width: calc((100%)/19.5);
+    height: calc((100vw)/19.5);
+    background-color: red;
+    margin: 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.element .element-symbol{
+    font-family: Poppins-bold;
+    font-size: calc((100vw)/47.5);
+    display: block;
+    height: 40%;
+}
+.element .element-info{
+    font-family: Poppins-light;
+    display: block;
+    font-size: calc((100vw)/154.5);
+    height: 15%;
+    margin-top:5%;
+}
+.null{
+    background-color: white;
+    cursor: initial;
+}
+.periodic-table-widget{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+}
+.periodic-table-widget div{
+    width: 50%;
+}
+.periodic-table-widget .periodic-text{
+    font-size: 20px;
+}
+.periodic-table-widget .periodic-text p{
+    width: 70%;
+    margin-left: 30%;
+}
+.periodic-selection-area h5{
+    font-size: 20px;
+}
+.periodic-selection-area select{
+    width: 40%;
+    height: 6vh;
+    background-color: var(--Sepia);
+    font-size: 15px;
+    border: 2px solid var(--Darkpurple);
+    border-radius: 5px;
+}
+@media(max-width: 700px){
+    .periodic-table-area h1{
+        font-size: 40px;
+    }
+    .periodic-table{
+        width: 99%;
+        margin: 0px 0.5%;
+    }
+    .element .element-symbol{
+        font-family: Poppins-bold;
+        font-size: calc((100vw)/34.5);
+        display: block;
+        height: 100%;
+        padding: 12% 0px;
+    }
+    .element .element-info{
+        display: none;
+    }
+    .periodic-table-widget{
+        display: block;
+    }
+    .periodic-table-widget div{
+        width: 100%;
+    }
+    .periodic-table-widget .periodic-text p{
+        width: 100%;
+        margin: 0px;
+    }
+}
+
+.bg-nobel-gas{
+    background: linear-gradient(110deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.3));
+}
+.bg-metalloids{
+    background: linear-gradient(110deg, rgba(140, 190, 0, 0.2), rgba(140, 190, 0, 0.3));
+}
+.bg-post-transition-metals{
+    background: linear-gradient(110deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0.3));
+}
+.bg-transition-metals{
+    background: linear-gradient(110deg, rgba(0, 128, 255, 0.2), rgba(0, 128, 255, 0.3));
+}
+.bg-alkaline-earth-metals{
+    background: linear-gradient(110deg, rgba(64, 64, 255, 0.2), rgba(64, 64, 255, 0.25));
+}
+.bg-alkali-metals{
+    background: linear-gradient(110deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.25));
+}
+.bg-lanthanides{
+    background: linear-gradient(110deg, rgba(0, 255, 255, 0.25), rgba(0, 255, 255, 0.35));
+}
+.bg-actinides{
+    background: linear-gradient(110deg, rgba(64, 255, 192, 0.25), rgba(64, 255, 192, 0.35));
+}
+.lanthanide-marker{
+    text-align: right;
+    background-color: white;
+    cursor: initial;
+}
+.lanthanide-row{
+    margin-top: 1.5vh;
+}
+/*---------------------------------------------------facts on elements-------------------------------------------*/
+.element-facts-area{
+    background-color: #F2F4F4;
+    width: 100%;
+    margin: 5vh 0px;
+    padding: 5vh;
+}
+
+#facts-area{
+    display: none;
+}
+.element-facts-area h1{
+    width: 100%;
+    text-align: center;
+    color: var(--Purple);
+}
+.element-facts-sub-area{
+    width: 90%;
+    margin: 5vh 5%;
+    display: flex;
+    justify-content: space-around;
+}
+.element-facts{
+    width: 60%;
+}
+.element-card{
+    width: 40%;
+}
+.card{
+    width: 15vw;
+    height: 15vw;
+    margin-left: 30%;
+    background-color: red;
+    text-align: center;
+    padding: 5% 0px;
+    transition: all 0.3s ease;
+}
+.card:hover{
+    transform: scale(1.2);
+}
+.card span{
+    display: block;
+}
+.card-number{
+    font-size: calc(15vw/10);;
+    font-family: Poppins-light;
+}
+.card-symbol{
+    font-size: calc(15vw/3);;
+    font-family: Poppins-bold;
+}
+.card-name{
+    font-size: calc(15vw/10);;
+}
+.element-facts table{
+    width: 100%;
+    text-align: left;
+}
+.element-facts td{
+    width: 50%;
+    padding-top: 2vh;
+}
+.trends-facts{
+    margin-top: 5vh;
+    display: none;
+}
+.block-info{
+    width: 100%;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+#block-info{
+    display:none;
+}
+.block-col{
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.block-bar{
+    width: 20%;
+    height: 5vh;
+    background-color: red;
+}
+.bg-sblock{
+    background: linear-gradient(110deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.3))
+}
+.bg-pblock{
+    background: linear-gradient(110deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0.3));
+}
+.bg-dblock{
+    background: linear-gradient(110deg, rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0.3));
+}
+.bg-fblock{
+    background: linear-gradient(110deg, rgba(0, 128, 255, 0.2), rgba(0, 128, 255, 0.3));
+}
+@media(max-width:600px){
+    .block-col{
+        width: 100%;
+        margin: 5vh 0px;
+    }
+    .block-col h3{
+        font-size: 13px;
+    }
+    .block-bar{
+        height: 2vh;
+    }
+}
+.gradient{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gradient-fact{
+    background: red;
+    height: 6vh;
+    width: 40vw;
+}
+@media(max-width: 700px){
+    .element-facts-area{
+        padding: 1vh;
+    }
+    .element-facts-sub-area{
+        display: block;
+    }
+    .element-facts{
+        width: 100%;
+    }
+    .element-card{
+        width: 100%;
+    }
+    .card-number {
+        font-size: calc(15vw/5);
+    }
+    .card-symbol {
+        font-size: calc(15vw/2);
+    }
+    .card-name {
+        font-size: calc(15vw/6);
+    }
+    .card {
+        width: 30vw;
+        height: 30vw;
+        margin: 10vh 33%;
+    }
+}
+/*------------------------------------------------Mnemonics----------------------------*/
+.mnemonics-area{
+    width: 100%;
+    height: max-content;
+}
+.mnemonics-area h1{
+    font-size: 50px;
+    margin: 4vh 0px;
+    width: 100%;
+    text-align: center;
+    color: var(--Purple);
+}
+.mnemonics-area .info-why-mnemonics{
+    font-size: 20px;
+    color: gray;
+    width: 80%;
+    margin: auto auto;
+}
+.mnemonics-area .mnemonics-intro{
+    font-size: 30px;
+    color: var(--Lightpurple);
+    width: 80%;
+    text-align: center;
+    margin: auto auto;
+}
+.mnemonics-list{
+    width: 80%;
+    margin: 5vh auto;
+}
+.mnemonics-list h3{
+    font-size: 30px;
+    color: var(--Darkpurple);
+    font-family: Poppins-bold;
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+.mnemonics-list p{
+    color: grey;
+    font-size: 20px;
+}
+.mnemonics-list p:before {
+    content: "→ ";
+    color: var(--Darkpurple);
+    font-size: 30px;
+}
+.mnemonics-list b{
+    font-size: 23px;
+    color: var(--Darkpurple);
+}
+/*--------------------------------------------- footer ------------------------------------*/
+.footer{
+    min-height: 30vh;
+    max-height: max-content;
+    background-color: var(--Darkpurple);
+    padding-bottom: 3vh;
+}
+.footer-row{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 5vh;
+}
+.about-section{
+    width: 40%;
+}
+.about-section h2, .about-section p{
+    color: white;
+}
+.footer-links{
+    width: 40%;
+}
+.footer-links h2,.footer-links ul{
+    color: white;
+}
+.footer-links ul{
+    list-style-type: none;
+    padding-left: 1vw;
+}
+.footer-links ul li a{
+    color: white;
+    text-decoration: none;
+}
+.footer-links ul li a:hover{
+    text-decoration: underline;
+}
+.footer hr{
+    margin: 3vh auto;
+    width: 90%;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    color: white;
+}

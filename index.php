@@ -18,7 +18,7 @@
                 <img src="includes/media/menu_bars.svg" id="menu-btn">
             </label>
             <ul class="menu">
-                <li><a href="index.html" onclick="closeMenu()">HOME</a></li>
+                <li><a href="index.php" onclick="closeMenu()">HOME</a></li>
                 <li><a href="#history-area" onclick="closeMenu()">HISTORY</a></li>
                 <li><a href="#area-periodic-table" onclick="closeMenu()">PERIODIC TABLE</a></li>
                 <li><a href="#mnemonics-area" onclick="closeMenu()">MNEMONICS</a></li>
@@ -222,7 +222,7 @@
                 <div class="footer-links">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="#history-area">History</a></li>
                         <li><a href="#area-periodic-table">Periodic Table</a></li> 
                         <li><a href="#mnemonics-area">Mnemonics</a></li>
@@ -230,8 +230,18 @@
                 </div>
             </div>
             <hr>
+            <?php
+                $myfile = fopen("includes/users.txt", "r") or die("Unable to open file!");
+                $numUsersStr = fgets($myfile);
+                $num = $numUsersStr + 1;
+                fclose($myfile);
+                $myfile = fopen("includes/users.txt", "w") or die("Unable to open file!");
+                fwrite($myfile, $num);
+                fclose($myfile);
+            ?>
             <div class="copyright">
-                &copy;2021 Awesome Elements - All Rights Reserved
+                &copy;2021 Awesome Elements - All Rights Reserved || Total Users - 
+                <?php echo($num); ?>
             </div>
         </div>
     </body>
